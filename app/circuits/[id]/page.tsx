@@ -1,7 +1,9 @@
 import Link from "next/link"
-import { ChevronLeft, MapPin, Trophy, Ruler, CornerDownRight, BarChart3 } from "lucide-react"
+import { ChevronLeft, MapPin, Trophy, Ruler, CornerDownRight, BarChart3, Flag } from "lucide-react"
 import { getCircuitById } from "@/lib/circuits-data"
 import { notFound } from "next/navigation"
+import CircuitHistory from "@/components/circuit-history"
+import CircuitFeatures from "@/components/circuit-features"
 
 export default function CircuitPage({ params }: { params: { id: string } }) {
   const circuit = getCircuitById(params.id)
@@ -37,6 +39,10 @@ export default function CircuitPage({ params }: { params: { id: string } }) {
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                <div className="flex items-center gap-2 mb-1">
+                  <Flag className="h-5 w-5" style={{ color: `#${circuit.countryCode}` }} />
+                  <span className="text-sm bg-zinc-800/80 px-2 py-0.5 rounded">{circuit.country}</span>
+                </div>
                 <h1 className="text-2xl md:text-3xl font-bold">{circuit.name}</h1>
                 <div className="flex items-center gap-2 text-zinc-300">
                   <MapPin className="h-4 w-4" />
@@ -86,6 +92,12 @@ export default function CircuitPage({ params }: { params: { id: string } }) {
               </div>
             </div>
           </div>
+
+          {circuit.features && (
+            <div className="mt-6">
+              <CircuitFeatures circuit={circuit} />
+            </div>
+          )}
         </div>
 
         <div className="space-y-6">
@@ -134,6 +146,8 @@ export default function CircuitPage({ params }: { params: { id: string } }) {
               </div>
             </div>
           </div>
+
+          {circuit.history && circuit.history.length > 0 && <CircuitHistory circuit={circuit} />}
         </div>
       </div>
     </div>

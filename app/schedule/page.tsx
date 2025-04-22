@@ -1,4 +1,4 @@
-import ScheduleTracker from "@/components/schedule-tracker"
+import DetailedSchedule from "@/components/detailed-schedule"
 
 export default function SchedulePage() {
   return (
@@ -8,7 +8,7 @@ export default function SchedulePage() {
         <p className="text-zinc-400">Upcoming races and past results for the 2024 Formula 1 season</p>
       </header>
 
-      <ScheduleTracker />
+      <DetailedSchedule />
     </div>
   )
 }

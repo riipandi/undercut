@@ -3,7 +3,8 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import Link from "next/link"
-import { Flag, Calendar, Users, MapPin } from "lucide-react"
+import { Flag, Calendar, Users, MapPin, BarChart3 } from "lucide-react"
+import RaceCountdownBanner from "@/components/race-countdown-banner"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="min-h-screen bg-zinc-900 text-white flex flex-col">
+          <RaceCountdownBanner />
           <nav className="bg-zinc-800 border-b border-zinc-700">
             <div className="container mx-auto px-4">
               <div className="flex items-center h-16">
@@ -42,6 +44,13 @@ export default function RootLayout({
                   >
                     <Calendar className="h-4 w-4 mr-2" />
                     Schedule
+                  </Link>
+                  <Link
+                    href="/standings"
+                    className="flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-zinc-700 whitespace-nowrap"
+                  >
+                    <BarChart3 className="h-4 w-4 mr-2" />
+                    Standings
                   </Link>
                   <Link
                     href="/drivers"

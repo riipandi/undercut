@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { MapPin, BarChart3 } from "lucide-react"
+import { MapPin, BarChart3, Flag } from "lucide-react"
 import { getAllCircuits } from "@/lib/circuits-data"
 
 export default function CircuitsList() {
@@ -26,7 +26,10 @@ export default function CircuitsList() {
                 <MapPin className="h-5 w-5 text-red-500" />
               </div>
               <div>
-                <h3 className="font-bold">{circuit.name}</h3>
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="font-bold">{circuit.name}</h3>
+                  <Flag className="h-4 w-4" style={{ color: `#${circuit.countryCode}` }} />
+                </div>
                 <p className="text-sm text-zinc-400">
                   {circuit.city}, {circuit.country}
                 </p>
