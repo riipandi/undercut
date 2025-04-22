@@ -188,7 +188,7 @@ export default function DetailedSchedule() {
 
                         <Link
                           href={`/circuits/${race.circuitId}`}
-                          className="block bg-zinc-700/30 p-3 rounded hover:bg-zinc-700/50 transition-colors"
+                          className="block bg-zinc-700/30 p-3 rounded hover:bg-zinc-700/50 transition-colors mb-4"
                         >
                           <div className="flex items-center justify-between mb-2">
                             <span className="font-medium">{race.circuit}</span>
@@ -197,6 +197,20 @@ export default function DetailedSchedule() {
                           <div className="text-sm text-zinc-400 mb-2">{race.location}</div>
                           <div className="text-xs bg-zinc-700 inline-block px-2 py-0.5 rounded">
                             View Circuit Details
+                          </div>
+                        </Link>
+
+                        <Link
+                          href={`/races/${race.id}`}
+                          className="block bg-red-900/30 p-3 rounded hover:bg-red-900/50 transition-colors"
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="font-medium">{race.name}</span>
+                            <Flag className="h-4 w-4 text-red-400" />
+                          </div>
+                          <div className="text-sm text-zinc-400 mb-2">Round {race.round}</div>
+                          <div className="text-xs bg-red-700 text-white inline-block px-2 py-0.5 rounded">
+                            View Race Details
                           </div>
                         </Link>
                       </div>

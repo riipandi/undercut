@@ -1,4 +1,4 @@
-import CircuitsMap from "@/components/circuits-map"
+import InteractiveCircuitMap from "@/components/interactive-circuit-map"
 import CircuitsList from "@/components/circuits-list"
 import Link from "next/link"
 import { BarChart3 } from "lucide-react"
@@ -22,7 +22,7 @@ export default function CircuitsPage() {
       </div>
 
       <div className="space-y-8">
-        <CircuitsMap />
+        <InteractiveCircuitMap />
         <CircuitsList />
       </div>
     </div>
