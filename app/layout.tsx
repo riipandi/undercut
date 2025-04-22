@@ -3,8 +3,10 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import Link from "next/link"
-import { Flag, Calendar, Users, MapPin, BarChart3 } from "lucide-react"
+import { Flag, Calendar, Users, MapPin, BarChart3, Video } from "lucide-react"
 import RaceCountdownBanner from "@/components/race-countdown-banner"
+import GlobalSearch from "@/components/global-search"
+import { Suspense } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -30,7 +32,7 @@ export default function RootLayout({
                 <Link href="/" className="text-xl font-bold text-red-600 mr-8">
                   F1 LIVE TRACKER
                 </Link>
-                <div className="flex space-x-4 overflow-x-auto">
+                <div className="flex space-x-4 overflow-x-auto flex-1">
                   <Link
                     href="/"
                     className="flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-zinc-700 whitespace-nowrap"
@@ -66,6 +68,18 @@ export default function RootLayout({
                     <MapPin className="h-4 w-4 mr-2" />
                     Circuits
                   </Link>
+                  <Link
+                    href="/videos"
+                    className="flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-zinc-700 whitespace-nowrap"
+                  >
+                    <Video className="h-4 w-4 mr-2" />
+                    Videos
+                  </Link>
+                </div>
+                <div className="ml-auto">
+                  <Suspense>
+                    <GlobalSearch />
+                  </Suspense>
                 </div>
               </div>
             </div>
@@ -78,13 +92,13 @@ export default function RootLayout({
                   &copy; {new Date().getFullYear()} F1 Live Tracker. Not affiliated with Formula 1.
                 </div>
                 <div className="flex space-x-4">
-                  <Link href="/" className="text-zinc-400 hover:text-white text-sm">
+                  <Link href="/privacy-policy" className="text-zinc-400 hover:text-white text-sm">
                     Privacy Policy
                   </Link>
-                  <Link href="/" className="text-zinc-400 hover:text-white text-sm">
+                  <Link href="/terms-of-service" className="text-zinc-400 hover:text-white text-sm">
                     Terms of Service
                   </Link>
-                  <Link href="/" className="text-zinc-400 hover:text-white text-sm">
+                  <Link href="/contact" className="text-zinc-400 hover:text-white text-sm">
                     Contact
                   </Link>
                 </div>

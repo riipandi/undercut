@@ -9,8 +9,11 @@ import SprintResults from "@/components/sprint-results"
 import FastestLaps from "@/components/fastest-laps"
 import PitStops from "@/components/pit-stops"
 import TeamRadio from "@/components/team-radio"
+import LiveTimingComparison from "@/components/live-timing-comparison"
+import VideoGallery from "@/components/video-gallery"
+import { getVideosByRace } from "@/lib/db/repositories/videos-repository"
 
-export default function RacePage({ params }: { params: { id: string } }) {
+export default async function RacePage({ params }: { params: { id: string } }) {
   const raceId = Number.parseInt(params.id)
 
   // Find race in either upcoming or past races
@@ -22,6 +25,9 @@ export default function RacePage({ params }: { params: { id: string } }) {
 
   const raceStats = getRaceStats(raceId)
   const isPastRace = "results" in race
+
+  // Get race videos
+  const raceVideos = await getVideosByRace(raceId)
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -218,6 +224,18 @@ export default function RacePage({ params }: { params: { id: string } }) {
           )}
         </div>
       </div>
+
+      {/* Live Timing Comparison */}
+      <div className="mb-6">
+        <LiveTimingComparison raceId={raceId} />
+      </div>
+
+      {/* Race Videos */}
+      {raceVideos.length > 0 && (
+        <div className="mb-6">
+          <VideoGallery initialVideos={raceVideos} title="Race Videos" showFilters={false} />
+        </div>
+      )}
 
       {raceStats && (
         <div className="space-y-6">
