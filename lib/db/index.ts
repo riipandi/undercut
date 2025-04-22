@@ -1,18 +1,29 @@
 import type { Database } from "./schema"
-import { Kysely, SqliteDialect } from "kysely"
-import SQLite from "better-sqlite3"
+import { Kysely } from "kysely"
 
-// Initialize SQLite database
-const dialect = new SqliteDialect({
-  database: new SQLite("f1tracker.db"),
-})
+// This is a placeholder for the actual database instance
+// It will be initialized only on the server
+let db: Kysely<Database>
 
-// Create Kysely instance
-export const db = new Kysely<Database>({
-  dialect,
-})
+// Initialize the database only on the server side
+if (typeof window === "undefined") {
+  // Dynamic import to avoid 'fs' module being included in client bundles
+  const { SqliteDialect } = require("kysely")
+  const SQLite = require("better-sqlite3")
+
+  const dialect = new SqliteDialect({
+    database: new SQLite("f1tracker.db"),
+  })
+
+  db = new Kysely<Database>({
+    dialect,
+  })
+}
 
 // Helper function to format dates for SQLite
 export function formatDate(date: Date = new Date()): string {
   return date.toISOString()
 }
+
+// Export the database instance
+export { db }

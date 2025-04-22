@@ -5,7 +5,7 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import { Play, Calendar, Clock } from "lucide-react"
 import Link from "next/link"
-import { getAllVideos, getVideosByType, searchVideos } from "@/lib/db/repositories/videos-repository"
+import { getAllVideos, getVideosByType, searchVideos } from "@/lib/db/actions"
 import type { Video } from "@/lib/db/schema"
 
 interface VideoGalleryProps {

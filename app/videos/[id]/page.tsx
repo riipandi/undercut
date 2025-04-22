@@ -3,7 +3,7 @@ import { ChevronLeft, Calendar, Clock, Share2 } from "lucide-react"
 import { notFound } from "next/navigation"
 import VideoPlayer from "@/components/video-player"
 import VideoGallery from "@/components/video-gallery"
-import { getVideoById, getVideosByType } from "@/lib/db/repositories/videos-repository"
+import { getVideoById, getVideosByType } from "@/lib/db/actions"
 
 export default async function VideoPage({ params }: { params: { id: string } }) {
   const videoId = params.id

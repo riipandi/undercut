@@ -11,7 +11,7 @@ import PitStops from "@/components/pit-stops"
 import TeamRadio from "@/components/team-radio"
 import LiveTimingComparison from "@/components/live-timing-comparison"
 import VideoGallery from "@/components/video-gallery"
-import { getVideosByRace } from "@/lib/db/repositories/videos-repository"
+import { getVideosByRace } from "@/lib/db/actions"
 
 export default async function RacePage({ params }: { params: { id: string } }) {
   const raceId = Number.parseInt(params.id)

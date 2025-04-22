@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Clock, BarChart2, Zap, ChevronDown, ChevronUp } from "lucide-react"
 import { teamColors } from "@/lib/constants"
-import { getDriversWithLapTimes, getLapTimesByDriver } from "@/lib/db/repositories/lap-times-repository"
+import { getDriversWithLapTimes, getLapTimesByDriver } from "@/lib/db/actions"
 import type { LapTime } from "@/lib/db/schema"
 
 interface LiveTimingComparisonProps {

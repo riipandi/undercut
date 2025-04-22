@@ -59,8 +59,7 @@
     "vaul": "^0.9.6",
     "zod": "^3.24.1",
     "leaflet": "latest",
-    "kysely": "latest",
-    "better-sqlite3": "latest"
+    "kysely": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",
